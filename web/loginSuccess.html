@@ -1,29 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User1
-  Date: 12/8/2018
-  Time: 11:44
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Sample FirebaseUI App</title>
     <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyA3H8URioq12gNBJUgmdtpqMPDUmXiyynQ",
-            authDomain: "jasonn-ec58a.firebaseapp.com",
-            databaseURL: "https://jasonn-ec58a.firebaseio.com",
-            projectId: "jasonn-ec58a",
-            storageBucket: "jasonn-ec58a.appspot.com",
-            messagingSenderId: "854282856736"
-        };
-        firebase.initializeApp(config);
-    </script>
+    <script src="app.js"></script>
     <script type="text/javascript">
         initApp = function() {
             firebase.auth().onAuthStateChanged(function(user) {
@@ -98,6 +78,8 @@
             //alert('Uploaded');
             task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
                 console.log('File available at', downloadURL);
+
+                writeUserData(Math.floor(100000 + Math.random() * 900000),file.name,downloadURL);
             });
         });
     });
